@@ -1,92 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Management App | Simplify Your Stay</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RTU Kota | Smart Hostel Management</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
+      :root {
+        --primary-blue: #1e3a8a;
+        --accent-yellow: #fbbf24;
+        --text-slate: #64748b;
+        --bg-light: #f8fafc;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--primary-blue);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Minimal Animation */
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; text-align: center; }
-
-        header { padding: 4rem 0; animation: fadeIn 1s ease-in; }
-
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark); }
-
-        p { font-size: 1.1rem; color: #64748b; margin-bottom: 2rem; }
-
-        .btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            display: inline-block;
-            transition: transform 0.2s;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+      header {
+        padding: 4rem 0 2rem;
+        animation: slideUp 0.8s ease-out;
+        text-align: center;
+      }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
+      .logo-box {
+        background: white;
+        padding: 10px;
+        border-radius: 15px;
+        display: inline-block;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+      }
 
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+      .logo-box img {
+        height: 80px;
+        width: auto;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        color: var(--text-slate);
+        margin-bottom: 2rem;
+      }
 
-        footer { margin-top: 4rem; padding: 2rem; font-size: 0.9rem; color: #94a3b8; }
+      .btn {
+        background-color: var(--accent-yellow);
+        color: var(--primary-blue);
+        padding: 1.2rem 2.5rem;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 1.1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+      }
+
+      /* Features Section */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+        animation: slideUp 1s ease-out;
+      }
+
+      .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(30, 58, 138, 0.1);
+        transition: 0.3s;
+      }
+
+      .card h3 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: var(--text-slate);
+        font-size: 0.95rem;
+      }
+
+      footer {
+        margin-top: 5rem;
+        padding: 2rem;
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        color: #94a3b8;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
+
+      .accent-bar {
+        width: 50px;
+        height: 5px;
+        background: var(--accent-yellow);
+        margin: 10px auto 20px;
+        border-radius: 10px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Hostel Management Simplied</h1>
-            <p>Manage rooms, tracking attendance, and handle payments all from your smartphone.</p>
-            <!-- Replace 'app-release.apk' with your actual file name -->
-            <a href="https://github.com/coderAdityaKumar/hostel-app-frontend/releases/download/v1.0/hostel.app.apk" class="btn" download>Download for Android</a>
-        </header>
+      <header>
+        <div class="logo-box">
+          <!-- Replace with your actual logo path or a placeholder -->
+          <img
+            src="https://www.rtu.ac.in/index/images/logo.png"
+            alt="RTU Logo"
+          />
+        </div>
+        <h1>RTU KOTA</h1>
+        <div class="accent-bar"></div>
+        <p class="subtitle">Smart Hostel Management Portal</p>
 
-        <section class="features">
-            <div class="card">
-                <h3>Quick Check-in</h3>
-                <p>Digital onboarding for students in under 60 seconds.</p>
-            </div>
-            <div class="card">
-                <h3>Fee Tracking</h3>
-                <p>Automated reminders and history for all transactions.</p>
-            </div>
-            <div class="card">
-                <h3>Instant Alerts</h3>
-                <p>Broadcast notices to all residents instantly via push notifications.</p>
-            </div>
-        </section>
+        <a
+          href="https://github.com/coderAdityaKumar/hostel-app-frontend/releases/download/v1.0/hostel.app.apk"
+          class="btn"
+        >
+          Download Android App
+          <span>→</span>
+        </a>
+      </header>
 
-        <footer>
-            &copy; 2026 Hostel Management App. All rights reserved.
-        </footer>
+      <section class="features">
+        <div class="card">
+          <h3>Quick Maintenance</h3>
+          <p>
+            Report issues instantly with real-time tracking and direct warden
+            communication.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Live Status</h3>
+          <p>
+            Check the status of your complaints and room availability directly
+            from your phone.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Official Portal</h3>
+          <p>
+            The authorized university application for students residing in RTU
+            Kota Hostels.
+          </p>
+        </div>
+      </section>
+
+      <footer>&copy; 2026 RAJASTHAN TECHNICAL UNIVERSITY, KOTA</footer>
     </div>
-
-</body>
+  </body>
 </html>
